@@ -33,17 +33,6 @@ Run the following commands to generate the configuration for building Tiny Tapeo
 python tt/configure.py --update-shuttle
 ```
 
-## Wafer.space id macro files
-
-Run the following commands to download the required macro files from wafer.space:
-
-```bash
-wget -O tt-multiplexer/ol2/tt_top/gds/gf180mcu_ws_ip__id.gds https://raw.githubusercontent.com/wafer-space/gf180mcu-project-template/refs/tags/1.3.1/ip/gf180mcu_ws_ip__id/gds/gf180mcu_ws_ip__id.gds
-wget -O tt-multiplexer/ol2/tt_top/lef/gf180mcu_ws_ip__id.lef https://raw.githubusercontent.com/wafer-space/gf180mcu-project-template/refs/tags/1.3.1/ip/gf180mcu_ws_ip__id/lef/gf180mcu_ws_ip__id.lef
-wget -O tt-multiplexer/ol2/tt_top/gds/gf180mcu_ws_ip__logo.gds https://raw.githubusercontent.com/wafer-space/gf180mcu-project-template/refs/tags/1.3.1/ip/gf180mcu_ws_ip__logo/gds/gf180mcu_ws_ip__logo.gds
-wget -O tt-multiplexer/ol2/tt_top/lef/gf180mcu_ws_ip__logo.lef https://raw.githubusercontent.com/wafer-space/gf180mcu-project-template/refs/tags/1.3.1/ip/gf180mcu_ws_ip__logo/lef/gf180mcu_ws_ip__logo.lef
-```
-
 ## Harden
 
 ```bash
@@ -51,7 +40,6 @@ nix-shell ${LIBRELANE_ROOT}/shell.nix --run "python -m librelane tt/rom/config.j
 nix-shell ${LIBRELANE_ROOT}/shell.nix --run "cd tt-multiplexer/ol2/tt_ctrl && python build.py"
 nix-shell ${LIBRELANE_ROOT}/shell.nix --run "cd tt-multiplexer/ol2/tt_mux && python build.py"
 python tt/configure.py --copy-macros
-python ./tt/tech/gf180mcuD/logo/generate_logos.py --output-dir tt-multiplexer/ol2/tt_top
 nix-shell ${LIBRELANE_ROOT}/shell.nix --run "cd tt-multiplexer/ol2/tt_top && python build.py"
 ```
 

@@ -53,14 +53,6 @@ jobs:
             extra-substituters = https://nix-cache.fossi-foundation.org
             extra-trusted-public-keys = nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs=
 
-      - name: Download wafer.space macros
-        if: ${{env.PDK == 'gf180mcuD'}}
-        run: |
-          wget -O tt-multiplexer/ol2/tt_top/gds/gf180mcu_ws_ip__id.gds https://raw.githubusercontent.com/wafer-space/gf180mcu-project-template/refs/tags/1.3.1/ip/gf180mcu_ws_ip__id/gds/gf180mcu_ws_ip__id.gds
-          wget -O tt-multiplexer/ol2/tt_top/lef/gf180mcu_ws_ip__id.lef https://raw.githubusercontent.com/wafer-space/gf180mcu-project-template/refs/tags/1.3.1/ip/gf180mcu_ws_ip__id/lef/gf180mcu_ws_ip__id.lef
-          wget -O tt-multiplexer/ol2/tt_top/gds/gf180mcu_ws_ip__logo.gds https://raw.githubusercontent.com/wafer-space/gf180mcu-project-template/refs/tags/1.3.1/ip/gf180mcu_ws_ip__logo/gds/gf180mcu_ws_ip__logo.gds
-          wget -O tt-multiplexer/ol2/tt_top/lef/gf180mcu_ws_ip__logo.lef https://raw.githubusercontent.com/wafer-space/gf180mcu-project-template/refs/tags/1.3.1/ip/gf180mcu_ws_ip__logo/lef/gf180mcu_ws_ip__logo.lef
-
       # Use LibreLane to build the macros and the final GDS
       - name: Harden Chip ROM
         run: nix-shell $GITHUB_WORKSPACE/librelane/shell.nix --run "python -m librelane tt/rom/config.json"
@@ -75,9 +67,6 @@ jobs:
 
       - name: Copy macros
         run: python ./tt/configure.py --copy-macros
-
-      - name: Generate corner logos
-        run: python ./tt/tech/gf180mcuD/logo/generate_logos.py --output-dir tt-multiplexer/ol2/tt_top
 
       - name: Harden tt_top
         working-directory: tt-multiplexer/ol2/tt_top
