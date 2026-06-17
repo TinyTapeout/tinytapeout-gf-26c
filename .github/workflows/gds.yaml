@@ -16,7 +16,8 @@ jobs:
     env:
       PYTHONIOENCODING: utf-8
       PDK: gf180mcuD
-      PDK_ROOT: ${{ github.workspace }}/gf180mcu
+      PDK_ROOT: ${{ github.workspace }}/.ciel
+      PDK_VERSION: 98203068432a374192b0163c6c7d491207b52992
       TT_CONFIG: gf180mcuD.yaml:../../mux_overrides.yaml
       # Uncomment the following line to build only the specified projects:
       #TT_ONLY_PROJECTS: tt_um_chip_rom,tt_um_factory_test
@@ -46,16 +47,24 @@ jobs:
       - name: Update caravel configuration
         run: python ./tt/configure.py --update-shuttle
 
-      - name: Install Nix and configure FOSSi cache
+      # Pull from both FOSSi and our public tinytapeout Cachix (we have a specialized openroad build)
+      - name: Install Nix and configure caches
         uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: |
-            extra-substituters = https://nix-cache.fossi-foundation.org
-            extra-trusted-public-keys = nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs=
+            extra-substituters = https://nix-cache.fossi-foundation.org https://tinytapeout.cachix.org
+            extra-trusted-public-keys = nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs= tinytapeout.cachix.org-1:+fnqskZ9OlxClVGx9v2UKzElRobfQfAEVQVTkVFxz68=
+
+      - name: Enable gf180mcu PDK via ciel
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pip install ciel==2.5.0
+          ciel enable --pdk gf180mcu $PDK_VERSION -l default -l gf180mcu_ocd_io
 
       # Use LibreLane to build the macros and the final GDS
       - name: Harden Chip ROM
-        run: nix-shell $GITHUB_WORKSPACE/librelane/shell.nix --run "python -m librelane tt/rom/config.json"
+        run: nix-shell $GITHUB_WORKSPACE/librelane/shell.nix --run "python -m librelane --manual-pdk tt/rom/config.json"
 
       - name: Harden tt_ctrl
         working-directory: tt-multiplexer/ol2/tt_ctrl

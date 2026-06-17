@@ -15,7 +15,8 @@ jobs:
   verification:
     env:
       PDK: gf180mcuD
-      PDK_ROOT: ${{ github.workspace }}/gf180mcu
+      PDK_ROOT: ${{ github.workspace }}/.ciel
+      PDK_VERSION: 98203068432a374192b0163c6c7d491207b52992
       TT_CONFIG: gf180mcuD.yaml
 
     # ubuntu
@@ -36,6 +37,13 @@ jobs:
 
       - name: install iverilog
         run: sudo apt-get update && sudo apt-get install -y iverilog
+
+      - name: Enable gf180mcu PDK via ciel
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pip install ciel==2.5.0
+          ciel enable --pdk gf180mcu $PDK_VERSION -l default -l gf180mcu_ocd_io
 
       - name: Configure the multiplexer for testing
         run: python ./tt/configure.py --update-shuttle --test
