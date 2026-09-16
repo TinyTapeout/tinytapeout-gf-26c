@@ -31,9 +31,9 @@ jobs:
 
       # Nix 2.35.0 (2026-07-13) added an isShallow() guard throwing
       # "is a shallow Git repository, so 'revCount' is not available".
-      # Work around this by unshallowing the librelane submodule.
-      - name: Unshallow the librelane submodule
-        run: git -C librelane fetch --unshallow
+      # flake-compat runs fetchGit on the tt-multiplexer checkout, so unshallow it.
+      - name: Unshallow the tt-multiplexer submodule
+        run: git -C tt-multiplexer fetch --unshallow
 
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
@@ -53,13 +53,12 @@ jobs:
       - name: Update caravel configuration
         run: python ./tt/configure.py --update-shuttle
 
-      # Pull from both FOSSi and our public tinytapeout Cachix (we have a specialized openroad build)
-      - name: Install Nix and configure caches
+      - name: Install Nix and configure FOSSi cache
         uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: |
-            extra-substituters = https://nix-cache.fossi-foundation.org https://tinytapeout.cachix.org
-            extra-trusted-public-keys = nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs= tinytapeout.cachix.org-1:+fnqskZ9OlxClVGx9v2UKzElRobfQfAEVQVTkVFxz68=
+            extra-substituters = https://nix-cache.fossi-foundation.org
+            extra-trusted-public-keys = nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs=
 
       - name: Enable gf180mcu PDK via ciel
         env:
@@ -68,24 +67,24 @@ jobs:
           pip install ciel==2.5.0
           ciel enable --pdk gf180mcu $PDK_VERSION -l default -l gf180mcu_ocd_io
 
-      # Use LibreLane to build the macros and the final GDS
+      # Use LibreLane (from the tt-multiplexer Nix shell) to build the macros and the final GDS
       - name: Harden Chip ROM
-        run: nix-shell $GITHUB_WORKSPACE/librelane/shell.nix --run "python -m librelane --manual-pdk tt/rom/config.json"
+        run: nix-shell $GITHUB_WORKSPACE/tt-multiplexer/shell.nix --run "python -m librelane --manual-pdk tt/rom/config.json"
 
       - name: Harden tt_ctrl
         working-directory: tt-multiplexer/ol2/tt_ctrl
-        run: nix-shell $GITHUB_WORKSPACE/librelane/shell.nix --run "python build.py"
+        run: nix-shell $GITHUB_WORKSPACE/tt-multiplexer/shell.nix --run "python build.py"
 
       - name: Harden tt_mux
         working-directory: tt-multiplexer/ol2/tt_mux
-        run: nix-shell $GITHUB_WORKSPACE/librelane/shell.nix --run "python build.py"
+        run: nix-shell $GITHUB_WORKSPACE/tt-multiplexer/shell.nix --run "python build.py"
 
       - name: Copy macros
         run: python ./tt/configure.py --copy-macros
 
       - name: Harden tt_top
         working-directory: tt-multiplexer/ol2/tt_top
-        run: nix-shell $GITHUB_WORKSPACE/librelane/shell.nix --run "python build.py"
+        run: nix-shell $GITHUB_WORKSPACE/tt-multiplexer/shell.nix --run "python build.py"
 
       - name: Create empty spef file if missing (temporary workaround)
         run: |
