@@ -16,7 +16,7 @@ jobs:
     env:
       PDK: gf180mcuD
       PDK_ROOT: ${{ github.workspace }}/.ciel
-      PDK_VERSION: 98203068432a374192b0163c6c7d491207b52992
+      PDK_VERSION: 1689ac3f2dc763876eaf967227c7dfe831b031ae
       TT_CONFIG: gf180mcuD.yaml
 
     # ubuntu
