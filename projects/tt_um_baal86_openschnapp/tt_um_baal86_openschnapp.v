@@ -1,0 +1,194 @@
+/*
+ * Copyright (c) 2026 Your Name
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+`default_nettype none
+
+module tt_um_baal86_openschnapp (
+    input  wire       VGND,
+    input  wire       VDPWR,    // 3.3v core power supply
+    input  wire [7:0] ui_in,    // Dedicated inputs
+    output wire [7:0] uo_out,   // Dedicated outputs
+    input  wire [7:0] uio_in,   // IOs: Input path
+    output wire [7:0] uio_out,  // IOs: Output path
+    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+    inout  wire [7:0] ua,       // Analog pins, only ua[5:0] can be used
+    input  wire       ena,      // always 1 when the design is powered, so you can ignore it
+    input  wire       clk,      // clock
+    input  wire       rst_n     // reset_n - low to reset
+);
+    wire [20:0] column;
+    wire        bus;
+    wire        dummy;
+    wire        reset;
+    wire [20:0] acol;
+    wire [16:0] arow;
+
+    assign ua[0] = bus;
+
+    ip_pixel_frame_right frame00(.read(arow[ 0]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame01(.read(arow[ 1]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame02(.read(arow[ 2]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame03(.read(arow[ 3]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame04(.read(arow[ 4]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame05(.read(arow[ 5]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame06(.read(arow[ 6]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame07(.read(arow[ 7]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame08(.read(arow[ 8]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame09(.read(arow[ 9]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame10(.read(arow[10]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame11(.read(arow[11]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame12(.read(arow[12]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame13(.read(arow[13]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame14(.read(arow[14]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame15(.read(arow[15]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+    ip_pixel_frame_right frame16(.read(arow[16]), .reset(reset), .VSUBS(VGND), .VDD(VDPWR));
+
+
+    ip_column column00( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[ 0]),   .bus(bus)   );
+    ip_column column01( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[ 1]),   .bus(bus)   );
+    ip_column column02( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[ 2]),   .bus(bus)   );
+    ip_column column03( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[ 3]),   .bus(bus)   );
+    ip_column column04( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[ 4]),   .bus(bus)   );
+    ip_column column05( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[ 5]),   .bus(bus)   );
+    ip_column column06( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[ 6]),   .bus(bus)   );
+    ip_column column07( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[ 7]),   .bus(bus)   );
+    ip_column column08( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[ 8]),   .bus(bus)   );
+    ip_column column09( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[ 9]),   .bus(bus)   );
+    ip_column column10( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[10]),   .bus(bus)   );
+    ip_column column11( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[11]),   .bus(bus)   );
+    ip_column column12( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[12]),   .bus(bus)   );
+    ip_column column13( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[13]),   .bus(bus)   );
+    ip_column column14( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[14]),   .bus(bus)   );
+    ip_column column15( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[15]),   .bus(bus)   );
+    ip_column column16( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[16]),   .bus(bus)   );
+    ip_column column17( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[17]),   .bus(bus)   );
+    ip_column column18( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[18]),   .bus(bus)   );
+    ip_column column19( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[19]),   .bus(bus)   );
+    ip_column column20( .VGND(VGND),    .VDPWR(VDPWR),  .arow(arow[16:0]),  .reset(reset),  .enable(acol[20]),   .bus(bus)   );
+
+    ip_psucap_l psucapl_0(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_1(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_2(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_3(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_4(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_5(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_6(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_7(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_8(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_9(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_10(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_11(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_12(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_13(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_14(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_15(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_l psucapl_16(.VDD(VDPWR),.VSUBS(VGND));
+
+    ip_psucap_br psucapl_br(.VDD(VDPWR),.VSUBS(VGND));
+
+    ip_psucap_logic psucapl_logic_0(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_logic psucapl_logic_1(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_logic psucapl_logic_2(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_logic psucapl_logic_3(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_logic psucapl_logic_4(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_logic psucapl_logic_5(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_logic psucapl_logic_6(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_logic psucapl_logic_7(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_logic psucapl_logic_8(.VDD(VDPWR),.VSUBS(VGND));
+
+    ip_psucap_bottom psucapl_bottom_0(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_1(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_2(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_3(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_4(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_5(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_6(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_7(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_8(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_9(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_10(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_11(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_12(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_13(.VDD(VDPWR),.VSUBS(VGND));
+    ip_psucap_bottom psucapl_bottom_14(.VDD(VDPWR),.VSUBS(VGND));
+
+
+    ip_pixel_nd2ps_dummy pixel_dummy(
+        .VDD(VDPWR), 
+        .VSUBS(VGND), 
+        .reset(reset), 
+        .read(VDPWR), 
+        .cl(dummy)
+    );
+
+    ip_current_source current_source(
+        .VDD(VDPWR),
+        .VSUBS(VGND),
+        .src_a(bus),
+        .src_b(dummy)
+    );
+
+    ip_sigproc sigproc(
+        .VDD(VDPWR),
+        .VSUBS(VGND),
+        .REF(dummy),
+        .SIG(bus),
+        .OUTP(ua[1])
+    );
+
+    ip_column_mux columnmux(
+        .clk(clk),
+	.VDD(VDPWR),
+	.VSS(VGND),
+        .A(uio_in[4:0]),
+        .Y(acol[20:0])
+    );
+
+    ip_row_mux rowmux(
+        .clk(clk),
+        .VDD(VDPWR),
+        .VSS(VGND),
+        .A(ui_in[4:0]),
+        .Y(arow[16:0])
+    );
+
+    ip_reset_latch reset_latch(
+        .A(ui_in[5]),
+        .Y(reset),
+        .clk(clk),
+        .VDD(VDPWR),
+        .VSS(VGND),
+    );
+
+    assign uo_out[0] = VGND;
+    assign uo_out[1] = VGND;
+    assign uo_out[2] = VGND;
+    assign uo_out[3] = VGND;
+    assign uo_out[4] = VGND;
+    assign uo_out[5] = VGND;
+    assign uo_out[6] = VGND;
+    assign uo_out[7] = VGND;
+
+    assign uio_out[0] = VGND;
+    assign uio_out[1] = VGND;
+    assign uio_out[2] = VGND;
+    assign uio_out[3] = VGND;
+    assign uio_out[4] = VGND;
+    assign uio_out[5] = VGND;
+    assign uio_out[6] = VGND;
+    assign uio_out[7] = VGND;
+
+    assign uio_oe[0] = VGND;
+    assign uio_oe[1] = VGND;
+    assign uio_oe[2] = VGND;
+    assign uio_oe[3] = VGND;
+    assign uio_oe[4] = VGND;
+    assign uio_oe[5] = VGND;
+    assign uio_oe[6] = VGND;
+    assign uio_oe[7] = VGND;
+
+endmodule
+
+
