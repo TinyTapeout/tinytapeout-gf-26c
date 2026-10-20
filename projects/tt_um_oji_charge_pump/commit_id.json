@@ -1,0 +1,9 @@
+{
+  "app": "custom_gds action",
+  "repo": "https://github.com/oji-hw/ttgf-hv-charge-pump",
+  "commit": "3d4a029cf07970f7bc62c39dc5ee7766f540a685",
+  "workflow_url": "https://github.com/oji-hw/ttgf-hv-charge-pump/actions/runs/39468467166",
+  "project_id": 6209,
+  "sort_id": 1792520056727,
+  "analog": true
+}
