@@ -1,0 +1,46 @@
+134. Printing statistics.
+
+=== tt_um_maohansun_ro_aging ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     3220        - wires
+     3255        - wire bits
+     1762        - public wires
+     1797        - public wire bits
+        8        - ports
+       43        - port bits
+     3236 3.91E+04 cells
+       36  632.218   gf180mcu_fd_sc_mcu7t5v0__and2_1
+        5   109.76   gf180mcu_fd_sc_mcu7t5v0__and3_1
+        4   96.589   gf180mcu_fd_sc_mcu7t5v0__and4_1
+        5   109.76   gf180mcu_fd_sc_mcu7t5v0__aoi211_1
+       10  175.616   gf180mcu_fd_sc_mcu7t5v0__aoi21_1
+        1   30.733   gf180mcu_fd_sc_mcu7t5v0__aoi222_1
+        6  118.541   gf180mcu_fd_sc_mcu7t5v0__aoi22_1
+       45  395.136   gf180mcu_fd_sc_mcu7t5v0__clkinv_1
+       23 1.72E+03   gf180mcu_fd_sc_mcu7t5v0__dffnrnq_1
+       30 2.24E+03   gf180mcu_fd_sc_mcu7t5v0__dffrnq_1
+      396 3.48E+03   gf180mcu_fd_sc_mcu7t5v0__inv_1
+        2   65.856   gf180mcu_fd_sc_mcu7t5v0__mux2_2
+       17 1.19E+03   gf180mcu_fd_sc_mcu7t5v0__mux4_1
+      675   7408.8   gf180mcu_fd_sc_mcu7t5v0__nand2_1
+       15  230.496   gf180mcu_fd_sc_mcu7t5v0__nand3_1
+        7  138.298   gf180mcu_fd_sc_mcu7t5v0__nand4_1
+      663 8.73E+03   gf180mcu_fd_sc_mcu7t5v0__nor2_1
+       17  298.547   gf180mcu_fd_sc_mcu7t5v0__nor3_1
+        9  197.568   gf180mcu_fd_sc_mcu7t5v0__nor4_1
+        6  131.712   gf180mcu_fd_sc_mcu7t5v0__oai211_1
+       39  684.902   gf180mcu_fd_sc_mcu7t5v0__oai21_1
+        2   52.685   gf180mcu_fd_sc_mcu7t5v0__oai221_1
+        4   96.589   gf180mcu_fd_sc_mcu7t5v0__oai31_1
+        1   17.562   gf180mcu_fd_sc_mcu7t5v0__or2_1
+        1   21.952   gf180mcu_fd_sc_mcu7t5v0__or3_1
+        3   79.027   gf180mcu_fd_sc_mcu7t5v0__or4_1
+      602 5.29E+03   gf180mcu_fd_sc_mcu7t5v0__tieh
+      612  5373.85   gf180mcu_fd_sc_mcu7t5v0__tiel
+
+   Chip area for module '\tt_um_maohansun_ro_aging': 39111.878400
+     of which used for sequential elements: 3955.750400 (10.11%)
+

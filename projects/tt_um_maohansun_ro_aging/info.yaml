@@ -1,0 +1,53 @@
+# Tiny Tapeout project information
+project:
+  title:        "RO array for variation and BTI aging"
+  author:       "Maohan Sun"
+  discord:      ""
+  description:  "52 ring oscillators (INV, NAND2/NOR2 on pin A1 or A2, AC- or DC-stressed) with an on-chip frequency counter"
+  language:     "Verilog"
+  clock_hz:     10000000
+
+  # How many tiles your design occupies? A single tile is about 340x160 uM.
+  tiles: "1x2"
+
+  top_module:  "tt_um_maohansun_ro_aging"
+
+  source_files:
+    - "project.v"
+    - "ro_ring.v"
+    - "ro_cells.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+pinout:
+  # Inputs
+  ui[0]: "SEL0"
+  ui[1]: "SEL1"
+  ui[2]: "SEL2"
+  ui[3]: "SEL3"
+  ui[4]: "SEL4"
+  ui[5]: "BYTE0"
+  ui[6]: "BYTE1"
+  ui[7]: "START"
+
+  # Outputs
+  uo[0]: "D0"
+  uo[1]: "D1"
+  uo[2]: "D2"
+  uo[3]: "D3"
+  uo[4]: "D4"
+  uo[5]: "D5"
+  uo[6]: "D6"
+  uo[7]: "D7"
+
+  # Bidirectional pins
+  uio[0]: "STRESS_ON"
+  uio[1]: "WIN0"
+  uio[2]: "WIN1"
+  uio[3]: "SEL5"
+  uio[4]: ""
+  uio[5]: ""
+  uio[6]: "RO_DIV256"
+  uio[7]: "DONE"
+
+# Do not change!
+yaml_version: 6
