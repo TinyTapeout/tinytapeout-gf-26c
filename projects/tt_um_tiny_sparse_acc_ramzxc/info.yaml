@@ -1,0 +1,56 @@
+# Tiny Tapeout project information
+project:
+  title:        "tiny-sparse-acc"      # Project title
+  author:       "Aram Yun"      # Your name
+  discord:      "ramzxc"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "tiny-acc"      # One line description of what your project does
+  language:     "SystemVerilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz:     10000000        # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 340x160 uM.
+  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 3x4 or 4x4
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_tiny_sparse_acc_ramzxc"
+
+  # List your project's source files here.
+  # Source files must be in ./src and you must list each source file separately, one per line.
+  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
+  source_files:
+    - "generated/design.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: ""
+  ui[1]: ""
+  ui[2]: ""
+  ui[3]: "UART RX"
+  ui[4]: ""
+  ui[5]: ""
+  ui[6]: ""
+  ui[7]: ""
+
+  # Outputs
+  uo[0]: "Job ready"
+  uo[1]: "Job done"
+  uo[2]: "Job error"
+  uo[3]: ""
+  uo[4]: "UART TX (READY)"
+  uo[5]: ""
+  uo[6]: ""
+  uo[7]: ""
+
+  # Bidirectional pins
+  uio[0]: "Flash CS_n"
+  uio[1]: "QSPI DQ0"
+  uio[2]: "QSPI DQ1"
+  uio[3]: "QSPI SCK"
+  uio[4]: "QSPI DQ2"
+  uio[5]: "QSPI DQ3"
+  uio[6]: "PSRAM A CS_n"
+  uio[7]: "PSRAM B CS_n"
+
+# Do not change!
+yaml_version: 6
