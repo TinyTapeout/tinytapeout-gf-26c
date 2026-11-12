@@ -1,0 +1,59 @@
+# Tiny Tapeout project information
+project:
+  title:        "Cache Coherence Protocol Simulator"      # Project title
+  author:       "William Park"      # Your name
+  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "Emulates MSI, MESI, and MOESI cache coherence protocols on a multi-core system."      # One line description of what your project does
+  language:     "SystemVerilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 340x160 uM.
+  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 3x4 or 4x4
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_cache_coherence_sim"
+
+  # List your project's source files here.
+  # Source files must be in ./src and you must list each source file separately, one per line.
+  # project.v is generated from the .sv files in ./src by sv2v, because the Tiny Tapeout
+  # flow's Yosys cannot parse the interfaces and package imports. Do not edit it by hand:
+  # change the .sv files and run `make sv2v` in the repo root.
+  source_files:
+    - "project.v"
+
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "req_valid (LOAD) / rd_next (READ)"
+  ui[1]: "cmd[0] (LOAD)"
+  ui[2]: "cmd[1] (LOAD)"
+  ui[3]: "core_sel (LOAD) / protocol[0] (RUN)"
+  ui[4]: "req_addr[0] (LOAD) / protocol[1] (RUN)"
+  ui[5]: "req_addr[1] (LOAD)"
+  ui[6]: "req_data (LOAD)"
+  ui[7]: "unused"
+
+  # Outputs
+  uo[0]: "resp_valid"
+  uo[1]: "cycle_count[0]"
+  uo[2]: "cycle_count[1]"
+  uo[3]: "cycle_count[2]"
+  uo[4]: "cycle_count[3]"
+  uo[5]: "cycle_count[4]"
+  uo[6]: "cycle_count[5]"
+  uo[7]: "cycle_count[6]"
+
+  # Bidirectional pins
+  uio[0]: "line exclusive / unused LOAD input"
+  uio[1]: "line dirty / unused LOAD input"
+  uio[2]: "line valid / unused LOAD input"
+  uio[3]: "line data[0] / unused LOAD input"
+  uio[4]: "line tag[0] / unused LOAD input"
+  uio[5]: "unused (0 in READ)"
+  uio[6]: "unused (0 in READ)"
+  uio[7]: "unused (0 in READ)"
+
+# Do not change!
+yaml_version: 6
