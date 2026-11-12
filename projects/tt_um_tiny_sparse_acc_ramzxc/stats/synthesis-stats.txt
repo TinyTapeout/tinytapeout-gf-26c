@@ -1,0 +1,17 @@
+96. Printing statistics.
+
+=== tt_um_tiny_sparse_acc_ramzxc ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        8 wires
+       43 wire bits
+        8 public wires
+       43 public wire bits
+        8 ports
+       43 port bits
+        1 cells
+        1   tiny_sparse_acc_core
+
+   Area for cell type \tiny_sparse_acc_core is unknown!
+
