@@ -1,0 +1,135 @@
+151. Printing statistics.
+
+=== BufferCC ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+        7        - wires
+        7        - wire bits
+        5        - public wires
+        5        - public wire bits
+        4        - ports
+        4        - port bits
+        4  166.835 cells
+        2   17.562   gf180mcu_fd_sc_mcu7t5v0__clkinv_1
+        2  149.274   gf180mcu_fd_sc_mcu7t5v0__dffrnq_1
+
+   Chip area for module '\BufferCC': 166.835200
+     of which used for sequential elements: 149.273600 (89.47%)
+
+=== tt_um_citroe_fpucordic ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     3221        - wires
+     3256        - wire bits
+      384        - public wires
+      419        - public wire bits
+        8        - ports
+       43        - port bits
+     3236 7.89E+04 cells
+       72 1.26E+03   gf180mcu_fd_sc_mcu7t5v0__and2_1
+       18  395.136   gf180mcu_fd_sc_mcu7t5v0__and3_1
+        4   96.589   gf180mcu_fd_sc_mcu7t5v0__and4_1
+       34  746.368   gf180mcu_fd_sc_mcu7t5v0__aoi211_1
+      237 4.16E+03   gf180mcu_fd_sc_mcu7t5v0__aoi21_1
+       81 1.96E+03   gf180mcu_fd_sc_mcu7t5v0__aoi221_1
+        1   30.733   gf180mcu_fd_sc_mcu7t5v0__aoi222_1
+      189 3.73E+03   gf180mcu_fd_sc_mcu7t5v0__aoi22_1
+       19  250.253   gf180mcu_fd_sc_mcu7t5v0__buf_1
+      220 1.93E+03   gf180mcu_fd_sc_mcu7t5v0__clkinv_1
+      377 2.81E+04   gf180mcu_fd_sc_mcu7t5v0__dffrnq_1
+        5  395.136   gf180mcu_fd_sc_mcu7t5v0__dffsnq_1
+      145  4774.56   gf180mcu_fd_sc_mcu7t5v0__mux2_2
+        2  140.493   gf180mcu_fd_sc_mcu7t5v0__mux4_1
+      595  6530.72   gf180mcu_fd_sc_mcu7t5v0__nand2_1
+      103 1.58E+03   gf180mcu_fd_sc_mcu7t5v0__nand3_1
+       21  414.893   gf180mcu_fd_sc_mcu7t5v0__nand4_1
+      228    3E+03   gf180mcu_fd_sc_mcu7t5v0__nor2_1
+       34  597.094   gf180mcu_fd_sc_mcu7t5v0__nor3_1
+       13  285.376   gf180mcu_fd_sc_mcu7t5v0__nor4_1
+       53 1.16E+03   gf180mcu_fd_sc_mcu7t5v0__oai211_1
+      358 6.29E+03   gf180mcu_fd_sc_mcu7t5v0__oai21_1
+       18  474.163   gf180mcu_fd_sc_mcu7t5v0__oai221_1
+       34  746.368   gf180mcu_fd_sc_mcu7t5v0__oai22_1
+       26  627.827   gf180mcu_fd_sc_mcu7t5v0__oai31_1
+       12  316.109   gf180mcu_fd_sc_mcu7t5v0__oai32_1
+       56   983.45   gf180mcu_fd_sc_mcu7t5v0__or2_1
+       22  482.944   gf180mcu_fd_sc_mcu7t5v0__or3_1
+       11  289.766   gf180mcu_fd_sc_mcu7t5v0__or4_1
+        3   26.342   gf180mcu_fd_sc_mcu7t5v0__tieh
+       12   105.37   gf180mcu_fd_sc_mcu7t5v0__tiel
+       60 1.71E+03   gf180mcu_fd_sc_mcu7t5v0__xnor2_1
+        7  368.794   gf180mcu_fd_sc_mcu7t5v0__xnor3_1
+      146  3845.99   gf180mcu_fd_sc_mcu7t5v0__xor2_1
+       20 1.01E+03   gf180mcu_fd_sc_mcu7t5v0__xor3_1
+        1        - submodules
+        1        -   BufferCC
+
+   Chip area for module '\tt_um_citroe_fpucordic': 78869.145600
+     of which used for sequential elements: 28533.209600 (36.18%)
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        |        +-Area including submodules.
+        |        | 
+     3240  7.9E+04 tt_um_citroe_fpucordic
+        4  166.835 BufferCC
+
+        +----------Count including submodules.
+        |        +-Area including submodules.
+        |        | 
+     3228        - wires
+     3263        - wire bits
+      389        - public wires
+      424        - public wire bits
+       12        - ports
+       47        - port bits
+        -        - memories
+        -        - memory bits
+        -        - processes
+     3240  7.9E+04 cells
+       72 1.26E+03   gf180mcu_fd_sc_mcu7t5v0__and2_1
+       18  395.136   gf180mcu_fd_sc_mcu7t5v0__and3_1
+        4   96.589   gf180mcu_fd_sc_mcu7t5v0__and4_1
+       34  746.368   gf180mcu_fd_sc_mcu7t5v0__aoi211_1
+      237 4.16E+03   gf180mcu_fd_sc_mcu7t5v0__aoi21_1
+       81 1.96E+03   gf180mcu_fd_sc_mcu7t5v0__aoi221_1
+        1   30.733   gf180mcu_fd_sc_mcu7t5v0__aoi222_1
+      189 3.73E+03   gf180mcu_fd_sc_mcu7t5v0__aoi22_1
+       19  250.253   gf180mcu_fd_sc_mcu7t5v0__buf_1
+      222 1.95E+03   gf180mcu_fd_sc_mcu7t5v0__clkinv_1
+      379 2.83E+04   gf180mcu_fd_sc_mcu7t5v0__dffrnq_1
+        5  395.136   gf180mcu_fd_sc_mcu7t5v0__dffsnq_1
+      145  4774.56   gf180mcu_fd_sc_mcu7t5v0__mux2_2
+        2  140.493   gf180mcu_fd_sc_mcu7t5v0__mux4_1
+      595  6530.72   gf180mcu_fd_sc_mcu7t5v0__nand2_1
+      103 1.58E+03   gf180mcu_fd_sc_mcu7t5v0__nand3_1
+       21  414.893   gf180mcu_fd_sc_mcu7t5v0__nand4_1
+      228    3E+03   gf180mcu_fd_sc_mcu7t5v0__nor2_1
+       34  597.094   gf180mcu_fd_sc_mcu7t5v0__nor3_1
+       13  285.376   gf180mcu_fd_sc_mcu7t5v0__nor4_1
+       53 1.16E+03   gf180mcu_fd_sc_mcu7t5v0__oai211_1
+      358 6.29E+03   gf180mcu_fd_sc_mcu7t5v0__oai21_1
+       18  474.163   gf180mcu_fd_sc_mcu7t5v0__oai221_1
+       34  746.368   gf180mcu_fd_sc_mcu7t5v0__oai22_1
+       26  627.827   gf180mcu_fd_sc_mcu7t5v0__oai31_1
+       12  316.109   gf180mcu_fd_sc_mcu7t5v0__oai32_1
+       56   983.45   gf180mcu_fd_sc_mcu7t5v0__or2_1
+       22  482.944   gf180mcu_fd_sc_mcu7t5v0__or3_1
+       11  289.766   gf180mcu_fd_sc_mcu7t5v0__or4_1
+        3   26.342   gf180mcu_fd_sc_mcu7t5v0__tieh
+       12   105.37   gf180mcu_fd_sc_mcu7t5v0__tiel
+       60 1.71E+03   gf180mcu_fd_sc_mcu7t5v0__xnor2_1
+        7  368.794   gf180mcu_fd_sc_mcu7t5v0__xnor3_1
+      146  3845.99   gf180mcu_fd_sc_mcu7t5v0__xor2_1
+       20 1.01E+03   gf180mcu_fd_sc_mcu7t5v0__xor3_1
+        1  166.835 submodules
+        1  166.835   BufferCC
+
+   Chip area for top module '\tt_um_citroe_fpucordic': 79035.980800
+     of which used for sequential elements: 28682.483200 (36.29%)
+

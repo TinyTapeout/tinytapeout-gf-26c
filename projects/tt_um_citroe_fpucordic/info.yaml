@@ -1,0 +1,56 @@
+# Tiny Tapeout project information
+project:
+  title:        "RV32E-tiny + FP16 CORDIC"      # Project title
+  author:       "Citroe"      # Your name
+  discord:      "oileron"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "16-bit RV32E-subset CPU with an FP16 CORDIC coprocessor (cos/sin, hypot/atan2); memory served by the RP2040"      # One line description of what your project does
+  language:     "SpinalHDL" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz:     12500000       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 340x160 uM.
+  tiles: "2x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 3x4 or 4x4
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_citroe_fpucordic"
+
+  # List your project's source files here.
+  # Source files must be in ./src and you must list each source file separately, one per line.
+  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
+  source_files:
+    - "project.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "MEM_IN0"
+  ui[1]: "MEM_IN1"
+  ui[2]: "MEM_IN2"
+  ui[3]: "MEM_IN3"
+  ui[4]: "MEM_IN4"
+  ui[5]: "MEM_IN5"
+  ui[6]: "MEM_IN6"
+  ui[7]: "MEM_IN7"
+
+  # Outputs
+  uo[0]: "MEM_OUT0"
+  uo[1]: "MEM_OUT1"
+  uo[2]: "MEM_OUT2"
+  uo[3]: "MEM_OUT3"
+  uo[4]: "MEM_OUT4"
+  uo[5]: "MEM_OUT5"
+  uo[6]: "MEM_OUT6"
+  uo[7]: "MEM_OUT7"
+
+  # Bidirectional pins
+  uio[0]: "REQ"
+  uio[1]: "ACK"
+  uio[2]: "HALTED"
+  uio[3]: ""
+  uio[4]: ""
+  uio[5]: ""
+  uio[6]: ""
+  uio[7]: ""
+
+# Do not change!
+yaml_version: 6
