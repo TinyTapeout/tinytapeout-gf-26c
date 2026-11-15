@@ -1,0 +1,48 @@
+125. Printing statistics.
+
+=== tt_um_strider93_lif ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+      999        - wires
+     1034        - wire bits
+      159        - public wires
+      194        - public wire bits
+        8        - ports
+       43        - port bits
+     1015 2.75E+04 cells
+       29  509.286   gf180mcu_fd_sc_mcu7t5v0__and2_1
+        7  153.664   gf180mcu_fd_sc_mcu7t5v0__and3_1
+        3   65.856   gf180mcu_fd_sc_mcu7t5v0__aoi211_1
+       65 1.14E+03   gf180mcu_fd_sc_mcu7t5v0__aoi21_1
+       10  241.472   gf180mcu_fd_sc_mcu7t5v0__aoi221_1
+        3   92.198   gf180mcu_fd_sc_mcu7t5v0__aoi222_1
+       90 1.78E+03   gf180mcu_fd_sc_mcu7t5v0__aoi22_1
+        2   26.342   gf180mcu_fd_sc_mcu7t5v0__buf_1
+       63   553.19   gf180mcu_fd_sc_mcu7t5v0__clkinv_1
+      151 1.13E+04   gf180mcu_fd_sc_mcu7t5v0__dffrnq_1
+       67 2.21E+03   gf180mcu_fd_sc_mcu7t5v0__mux2_2
+      145  1591.52   gf180mcu_fd_sc_mcu7t5v0__nand2_1
+       42  645.389   gf180mcu_fd_sc_mcu7t5v0__nand3_1
+       12  237.082   gf180mcu_fd_sc_mcu7t5v0__nand4_1
+       78 1.03E+03   gf180mcu_fd_sc_mcu7t5v0__nor2_1
+       14  245.862   gf180mcu_fd_sc_mcu7t5v0__nor3_1
+       13  285.376   gf180mcu_fd_sc_mcu7t5v0__nor4_1
+       20   439.04   gf180mcu_fd_sc_mcu7t5v0__oai211_1
+       72 1.26E+03   gf180mcu_fd_sc_mcu7t5v0__oai21_1
+        5   109.76   gf180mcu_fd_sc_mcu7t5v0__oai22_1
+        4   96.589   gf180mcu_fd_sc_mcu7t5v0__oai31_1
+        3   79.027   gf180mcu_fd_sc_mcu7t5v0__oai32_1
+       15  263.424   gf180mcu_fd_sc_mcu7t5v0__or2_1
+        2   43.904   gf180mcu_fd_sc_mcu7t5v0__or3_1
+        2   17.562   gf180mcu_fd_sc_mcu7t5v0__tieh
+       12   105.37   gf180mcu_fd_sc_mcu7t5v0__tiel
+       16  456.602   gf180mcu_fd_sc_mcu7t5v0__xnor2_1
+        6  316.109   gf180mcu_fd_sc_mcu7t5v0__xnor3_1
+       41 1.08E+03   gf180mcu_fd_sc_mcu7t5v0__xor2_1
+       23 1.16E+03   gf180mcu_fd_sc_mcu7t5v0__xor3_1
+
+   Chip area for module '\tt_um_strider93_lif': 27503.660800
+     of which used for sequential elements: 11270.156800 (40.98%)
+
