@@ -1,0 +1,53 @@
+145. Printing statistics.
+
+=== tt_um_daniel6872_fft ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     1516        - wires
+     1551        - wire bits
+      131        - public wires
+      166        - public wire bits
+        8        - ports
+       43        - port bits
+     1532 3.21E+04 cells
+       36  632.218   gf180mcu_fd_sc_mcu7t5v0__and2_1
+       12  263.424   gf180mcu_fd_sc_mcu7t5v0__and3_1
+       17  410.502   gf180mcu_fd_sc_mcu7t5v0__and4_1
+       11  241.472   gf180mcu_fd_sc_mcu7t5v0__aoi211_1
+      113 1.98E+03   gf180mcu_fd_sc_mcu7t5v0__aoi21_1
+       12  289.766   gf180mcu_fd_sc_mcu7t5v0__aoi221_1
+       73 1.44E+03   gf180mcu_fd_sc_mcu7t5v0__aoi22_1
+        2   26.342   gf180mcu_fd_sc_mcu7t5v0__buf_1
+       80  702.464   gf180mcu_fd_sc_mcu7t5v0__clkinv_1
+      119 7.58E+03   gf180mcu_fd_sc_mcu7t5v0__dffq_1
+        4  298.547   gf180mcu_fd_sc_mcu7t5v0__dffrnq_1
+       13  428.064   gf180mcu_fd_sc_mcu7t5v0__mux2_2
+      303 3.33E+03   gf180mcu_fd_sc_mcu7t5v0__nand2_1
+      130    2E+03   gf180mcu_fd_sc_mcu7t5v0__nand3_1
+       44  869.299   gf180mcu_fd_sc_mcu7t5v0__nand4_1
+      153 2.02E+03   gf180mcu_fd_sc_mcu7t5v0__nor2_1
+       23  403.917   gf180mcu_fd_sc_mcu7t5v0__nor3_1
+        7  153.664   gf180mcu_fd_sc_mcu7t5v0__nor4_1
+       22  482.944   gf180mcu_fd_sc_mcu7t5v0__oai211_1
+       91  1.6E+03   gf180mcu_fd_sc_mcu7t5v0__oai21_1
+       37  974.669   gf180mcu_fd_sc_mcu7t5v0__oai221_1
+        2   65.856   gf180mcu_fd_sc_mcu7t5v0__oai222_1
+       33  724.416   gf180mcu_fd_sc_mcu7t5v0__oai22_1
+       14  338.061   gf180mcu_fd_sc_mcu7t5v0__oai31_1
+        9  237.082   gf180mcu_fd_sc_mcu7t5v0__oai32_1
+        1   32.928   gf180mcu_fd_sc_mcu7t5v0__oai33_1
+       37  649.779   gf180mcu_fd_sc_mcu7t5v0__or2_1
+        5   109.76   gf180mcu_fd_sc_mcu7t5v0__or3_1
+        1   26.342   gf180mcu_fd_sc_mcu7t5v0__or4_1
+        2   17.562   gf180mcu_fd_sc_mcu7t5v0__tieh
+       12   105.37   gf180mcu_fd_sc_mcu7t5v0__tiel
+       22  627.827   gf180mcu_fd_sc_mcu7t5v0__xnor2_1
+        7  368.794   gf180mcu_fd_sc_mcu7t5v0__xnor3_1
+       65 1.71E+03   gf180mcu_fd_sc_mcu7t5v0__xor2_1
+       20 1.01E+03   gf180mcu_fd_sc_mcu7t5v0__xor3_1
+
+   Chip area for module '\tt_um_daniel6872_fft': 32142.118400
+     of which used for sequential elements: 7874.182400 (24.50%)
+
