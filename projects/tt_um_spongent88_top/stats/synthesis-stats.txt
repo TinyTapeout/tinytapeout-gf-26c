@@ -1,0 +1,48 @@
+149. Printing statistics.
+
+=== tt_um_spongent88_top ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+      977        - wires
+     1012        - wire bits
+      153        - public wires
+      188        - public wire bits
+        8        - ports
+       43        - port bits
+      993  2.6E+04 cells
+       15  263.424   gf180mcu_fd_sc_mcu7t5v0__and2_1
+        3   65.856   gf180mcu_fd_sc_mcu7t5v0__and3_1
+       16  351.232   gf180mcu_fd_sc_mcu7t5v0__aoi211_1
+       45  790.272   gf180mcu_fd_sc_mcu7t5v0__aoi21_1
+       17  410.502   gf180mcu_fd_sc_mcu7t5v0__aoi221_1
+       89 1.76E+03   gf180mcu_fd_sc_mcu7t5v0__aoi22_1
+        1   13.171   gf180mcu_fd_sc_mcu7t5v0__buf_1
+       77  676.122   gf180mcu_fd_sc_mcu7t5v0__clkinv_1
+      142 1.06E+04   gf180mcu_fd_sc_mcu7t5v0__dffrnq_1
+        2  158.054   gf180mcu_fd_sc_mcu7t5v0__dffsnq_1
+       19  625.632   gf180mcu_fd_sc_mcu7t5v0__mux2_2
+       21 1.48E+03   gf180mcu_fd_sc_mcu7t5v0__mux4_1
+      144 1.58E+03   gf180mcu_fd_sc_mcu7t5v0__nand2_1
+       27  414.893   gf180mcu_fd_sc_mcu7t5v0__nand3_1
+       10  197.568   gf180mcu_fd_sc_mcu7t5v0__nand4_1
+       83  1093.21   gf180mcu_fd_sc_mcu7t5v0__nor2_1
+       28  491.725   gf180mcu_fd_sc_mcu7t5v0__nor3_1
+        5   109.76   gf180mcu_fd_sc_mcu7t5v0__nor4_1
+       14  307.328   gf180mcu_fd_sc_mcu7t5v0__oai211_1
+      108  1.9E+03   gf180mcu_fd_sc_mcu7t5v0__oai21_1
+       15  395.136   gf180mcu_fd_sc_mcu7t5v0__oai221_1
+       17  373.184   gf180mcu_fd_sc_mcu7t5v0__oai22_1
+       11  265.619   gf180mcu_fd_sc_mcu7t5v0__oai31_1
+       14  368.794   gf180mcu_fd_sc_mcu7t5v0__oai32_1
+       17  298.547   gf180mcu_fd_sc_mcu7t5v0__or2_1
+        3   65.856   gf180mcu_fd_sc_mcu7t5v0__or3_1
+        1   26.342   gf180mcu_fd_sc_mcu7t5v0__or4_1
+       22  193.178   gf180mcu_fd_sc_mcu7t5v0__tiel
+        5  142.688   gf180mcu_fd_sc_mcu7t5v0__xnor2_1
+       22  579.533   gf180mcu_fd_sc_mcu7t5v0__xor2_1
+
+   Chip area for module '\tt_um_spongent88_top': 25986.777600
+     of which used for sequential elements: 10756.480000 (41.39%)
+
