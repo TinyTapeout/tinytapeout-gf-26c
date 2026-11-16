@@ -1,0 +1,52 @@
+# Tiny Tapeout project information
+project:
+  title: "Audio DSP"
+  author: "John Long"
+  discord: ""
+  description: "Configurable 8-tap FIR audio DSP with packetized DTR input and 1-bit audio output"
+  language: "SystemVerilog"
+  clock_hz: 25000000
+  tiles: "1x2" #was 2*2
+  top_module: "tt_um_audio_dsp_engine"
+
+  # Each compiled source must be present in src/.
+  source_files:
+    - "project.v"
+    - "packet_parser.v"
+    - "dsp_state_regs.v"
+    - "fir_engine.v"
+    - "output_tx.v"
+
+  # Pinout matches src/project.v. The system clock and active-low reset
+  # use TinyTapeout dedicated pins (clk and rst_n), not the user I/O pins.
+pinout:
+    ui[0]: "dtr_link[0]"
+    ui[1]: "dtr_link[1]"
+    ui[2]: "dtr_link[2]"
+    ui[3]: "dtr_link[3]"
+    ui[4]: "dtr_link[4]"
+    ui[5]: "dtr_link[5]"
+    ui[6]: "dtr_link[6]"
+    ui[7]: "dtr_link[7]"
+
+    uo[0]: "dtr_ready"
+    uo[1]: "dsp_busy"
+    uo[2]: "config_pending"
+    uo[3]: "coeff_pending"
+    uo[4]: "protocol_error"
+    uo[5]: "coeff_updated"
+    uo[6]: "config_updated"
+    uo[7]: "audio_out"
+
+    # Bidirectional pins are configured as inputs (uio_oe = 8'b0).
+    uio[0]: "dtr_valid"
+    uio[1]: ""
+    uio[2]: ""
+    uio[3]: ""
+    uio[4]: ""
+    uio[5]: ""
+    uio[6]: ""
+    uio[7]: ""
+
+# Do not change the YAML version.
+yaml_version: 6

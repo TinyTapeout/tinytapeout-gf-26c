@@ -1,0 +1,54 @@
+145. Printing statistics.
+
+=== tt_um_audio_dsp_engine ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     2347        - wires
+     2382        - wire bits
+      698        - public wires
+      733        - public wire bits
+        8        - ports
+       43        - port bits
+     2363 8.33E+04 cells
+       28  491.725   gf180mcu_fd_sc_mcu7t5v0__and2_1
+        5   109.76   gf180mcu_fd_sc_mcu7t5v0__and3_1
+        3   72.442   gf180mcu_fd_sc_mcu7t5v0__and4_1
+       12  263.424   gf180mcu_fd_sc_mcu7t5v0__aoi211_1
+      119  2089.83   gf180mcu_fd_sc_mcu7t5v0__aoi21_1
+       37  893.446   gf180mcu_fd_sc_mcu7t5v0__aoi221_1
+       24  737.587   gf180mcu_fd_sc_mcu7t5v0__aoi222_1
+       89 1.76E+03   gf180mcu_fd_sc_mcu7t5v0__aoi22_1
+        8   105.37   gf180mcu_fd_sc_mcu7t5v0__buf_1
+      100   878.08   gf180mcu_fd_sc_mcu7t5v0__clkinv_1
+       32 2.11E+03   gf180mcu_fd_sc_mcu7t5v0__dffnq_1
+        2  149.274   gf180mcu_fd_sc_mcu7t5v0__dffnrnq_1
+      240 1.53E+04   gf180mcu_fd_sc_mcu7t5v0__dffq_1
+      394 2.94E+04   gf180mcu_fd_sc_mcu7t5v0__dffrnq_1
+        1   79.027   gf180mcu_fd_sc_mcu7t5v0__dffsnq_1
+      490 1.61E+04   gf180mcu_fd_sc_mcu7t5v0__mux2_2
+      266 2.92E+03   gf180mcu_fd_sc_mcu7t5v0__nand2_1
+       44  676.122   gf180mcu_fd_sc_mcu7t5v0__nand3_1
+       35  691.488   gf180mcu_fd_sc_mcu7t5v0__nand4_1
+       82 1.08E+03   gf180mcu_fd_sc_mcu7t5v0__nor2_1
+       19   333.67   gf180mcu_fd_sc_mcu7t5v0__nor3_1
+       10   219.52   gf180mcu_fd_sc_mcu7t5v0__nor4_1
+       35   768.32   gf180mcu_fd_sc_mcu7t5v0__oai211_1
+      150  2634.24   gf180mcu_fd_sc_mcu7t5v0__oai21_1
+        1   26.342   gf180mcu_fd_sc_mcu7t5v0__oai221_1
+        8  175.616   gf180mcu_fd_sc_mcu7t5v0__oai22_1
+        9  217.325   gf180mcu_fd_sc_mcu7t5v0__oai31_1
+        6  158.054   gf180mcu_fd_sc_mcu7t5v0__oai32_1
+        9  158.054   gf180mcu_fd_sc_mcu7t5v0__or2_1
+        3   65.856   gf180mcu_fd_sc_mcu7t5v0__or3_1
+        2   52.685   gf180mcu_fd_sc_mcu7t5v0__or4_1
+       16  140.493   gf180mcu_fd_sc_mcu7t5v0__tiel
+       19  542.214   gf180mcu_fd_sc_mcu7t5v0__xnor2_1
+        3  158.054   gf180mcu_fd_sc_mcu7t5v0__xnor3_1
+       59 1.55E+03   gf180mcu_fd_sc_mcu7t5v0__xor2_1
+        3  151.469   gf180mcu_fd_sc_mcu7t5v0__xor3_1
+
+   Chip area for module '\tt_um_audio_dsp_engine': 83279.302400
+     of which used for sequential elements: 47021.184000 (56.46%)
+
