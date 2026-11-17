@@ -1,0 +1,62 @@
+# Tiny Tapeout project information
+project:
+  title:        "Xcordic: ROM-Less CORDIC function unit"
+  author:       "Rohan Verma"
+  discord:      "always_ff_rohan"
+  description:  "Computes sin, cos, tan, atan2, hypot, exp, ln, sqrt, mul, div, tanh over SPI. It's ROM-less and formally verified, a successor to tt_um_romless_cordic_engine on TTSKY25A"
+  language:     "Verilog"
+  clock_hz:     25000000
+
+  # GF26c (gf180mcuD, 7-track cells at 3.3 V). GUARD = 4, FUNCS = 1, SPI_SCLK = 0
+  # (the defaults in src/project.v): ~345k um^2 of cells before placement.
+  # 3x4 = 1076 x 737 um (793k um^2); the layout fills about 58 % after buffering
+  # and clock tree.
+  tiles: "3x4"
+
+  top_module:  "tt_um_xcordic"
+
+  source_files:
+    - "project.v"
+    - "xc_spi_slave.v"
+    - "xc_spi_slave_sclk.v"
+    - "xc_meta.v"
+    - "xc_frame.v"
+    - "xc_bist.v"
+    - "xc_exact.v"
+    - "xcordic_core.v"
+    - "xcordic_engine.v"
+    - "xcordic_atan.v"
+    - "xc_add.v"
+pinout:
+  # Inputs
+  ui[0]: "SCLK"
+  ui[1]: "MOSI"
+  ui[2]: "CS_N"
+  ui[3]: "PROTO (0 legacy, 1 command)"
+  ui[4]: "CPHA (0 SPI mode 0, 1 SPI mode 1)"
+  ui[5]: ""
+  ui[6]: ""
+  ui[7]: ""
+
+  # Outputs
+  uo[0]: "MISO"
+  uo[1]: "DATA_READY"
+  uo[2]: "BUSY"
+  uo[3]: ""
+  uo[4]: ""
+  uo[5]: ""
+  uo[6]: ""
+  uo[7]: ""
+
+  # Bidirectional pins
+  uio[0]: ""
+  uio[1]: ""
+  uio[2]: ""
+  uio[3]: ""
+  uio[4]: ""
+  uio[5]: ""
+  uio[6]: ""
+  uio[7]: ""
+
+# Do not change!
+yaml_version: 6
