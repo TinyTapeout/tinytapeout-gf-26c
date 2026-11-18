@@ -1,0 +1,54 @@
+153. Printing statistics.
+
+=== tt_um_xanok_cpu8 ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     1252        - wires
+     1287        - wire bits
+      173        - public wires
+      208        - public wire bits
+        8        - ports
+       43        - port bits
+     1269 2.99E+04 cells
+       39  684.902   gf180mcu_fd_sc_mcu7t5v0__and2_1
+       12  263.424   gf180mcu_fd_sc_mcu7t5v0__and3_1
+        2   48.294   gf180mcu_fd_sc_mcu7t5v0__and4_1
+       15   329.28   gf180mcu_fd_sc_mcu7t5v0__aoi211_1
+      117 2.05E+03   gf180mcu_fd_sc_mcu7t5v0__aoi21_1
+       30  724.416   gf180mcu_fd_sc_mcu7t5v0__aoi221_1
+        5  153.664   gf180mcu_fd_sc_mcu7t5v0__aoi222_1
+       31  612.461   gf180mcu_fd_sc_mcu7t5v0__aoi22_1
+        5   65.856   gf180mcu_fd_sc_mcu7t5v0__buf_1
+       74  649.779   gf180mcu_fd_sc_mcu7t5v0__clkinv_1
+      161 1.02E+04   gf180mcu_fd_sc_mcu7t5v0__dffq_1
+        2  149.274   gf180mcu_fd_sc_mcu7t5v0__dffrnq_1
+       16  526.848   gf180mcu_fd_sc_mcu7t5v0__mux2_2
+      154 1.69E+03   gf180mcu_fd_sc_mcu7t5v0__nand2_1
+       39   599.29   gf180mcu_fd_sc_mcu7t5v0__nand3_1
+       16  316.109   gf180mcu_fd_sc_mcu7t5v0__nand4_1
+      145 1.91E+03   gf180mcu_fd_sc_mcu7t5v0__nor2_1
+       29  509.286   gf180mcu_fd_sc_mcu7t5v0__nor3_1
+       14  307.328   gf180mcu_fd_sc_mcu7t5v0__nor4_1
+       53 1.16E+03   gf180mcu_fd_sc_mcu7t5v0__oai211_1
+      144  2528.87   gf180mcu_fd_sc_mcu7t5v0__oai21_1
+       32  842.957   gf180mcu_fd_sc_mcu7t5v0__oai221_1
+        9  197.568   gf180mcu_fd_sc_mcu7t5v0__oai22_1
+       13  313.914   gf180mcu_fd_sc_mcu7t5v0__oai31_1
+        4   105.37   gf180mcu_fd_sc_mcu7t5v0__oai32_1
+       11  193.178   gf180mcu_fd_sc_mcu7t5v0__or2_1
+        8  175.616   gf180mcu_fd_sc_mcu7t5v0__or3_1
+        5  131.712   gf180mcu_fd_sc_mcu7t5v0__or4_1
+        6   52.685   gf180mcu_fd_sc_mcu7t5v0__tieh
+        6   52.685   gf180mcu_fd_sc_mcu7t5v0__tiel
+       10  285.376   gf180mcu_fd_sc_mcu7t5v0__xnor2_1
+       45 1.19E+03   gf180mcu_fd_sc_mcu7t5v0__xor2_1
+       16  807.834   gf180mcu_fd_sc_mcu7t5v0__xor3_1
+        1        -   unisc_logo
+
+   Area for cell type \unisc_logo is unknown!
+
+   Chip area for module '\tt_um_xanok_cpu8': 29881.062400
+     of which used for sequential elements: 10398.662400 (34.80%)
+
