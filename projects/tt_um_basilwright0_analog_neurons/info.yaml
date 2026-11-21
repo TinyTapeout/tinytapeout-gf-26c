@@ -1,0 +1,66 @@
+# Tiny Tapeout project information
+project:
+  title:        "Analog Neuron Test Bench"      # Project title
+  author:       "Basil Wright"      # Your name
+  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "Mixed-signal neuromorphic test chip: 16 analog LIF, AdEx and dendritic neurons, a digital LIF reference, programmable biasing and probe readout"      # One line description of what your project does
+  language:     "Analog" # other examples include Verilog, Amaranth, VHDL, etc
+  clock_hz:     10000000       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 340x160 uM.
+  tiles: "1x2"          # Valid values for analog projects: 1x2, 2x2, 3x2, 4x2
+
+  # How many analog pins does your project use?
+  analog_pins: 2        # Valid values: 0 to 6
+  uses_vapwr: false     # Set to true if your project uses the second analog power supply (VAPWR) in addition to VDPWR (3.3V)
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_basilwright0_analog_neurons"
+
+  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:        
+    - "project.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "CFG_SCK: config shift clock"
+  ui[1]: "CFG_DATA: config serial data"
+  ui[2]: "CFG_LOAD: config latch strobe"
+  ui[3]: "STIM_A: stimulus A / digital LIF event 0"
+  ui[4]: "STIM_B: stimulus B / digital LIF event 1"
+  ui[5]: "HOLD: membrane hold"
+  ui[6]: "MRESET: membrane reset"
+  ui[7]: "LIF_TICK: digital LIF update (rising edge)"
+
+  # Outputs
+  uo[0]: "SPK0: S1 spike"
+  uo[1]: "SPK1: F1 spike"
+  uo[2]: "SPK2: H1 spike"
+  uo[3]: "SPK3: AdEx spike"
+  uo[4]: "SPK4: S2 spike"
+  uo[5]: "SPK5: F2 spike"
+  uo[6]: "SPK6: H2 spike"
+  uo[7]: "SPK7: P2 spike"
+
+  # Bidirectional pins
+  uio[0]: "SPK8: S3 spike"
+  uio[1]: "SPK9: F3 spike"
+  uio[2]: "SPK10: H3 spike"
+  uio[3]: "SPK11: P3 spike"
+  uio[4]: "SPK12: CMP spike"
+  uio[5]: "SPK13: D1 dendrite spike"
+  uio[6]: "Digital LIF spike (OUT_MUX=0) / SPK14: AH50 spike (OUT_MUX=1)"
+  uio[7]: "Config echo (OUT_MUX=0) / SPK15: AH800 spike (OUT_MUX=1)"
+
+  # Analog pins - make sure to also set "analog_pins" above, else the pins won't be connected
+  ua[0]: "IREF: bias reference current in (sets speed) / stimulus in"
+  ua[1]: "PROBE: buffered analog probe out (membrane / adaptation / dendrite)"
+  ua[2]: ""
+  ua[3]: ""
+  ua[4]: ""
+  ua[5]: ""
+
+# Do not change!
+yaml_version: 6
