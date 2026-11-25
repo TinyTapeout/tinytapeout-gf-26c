@@ -52,7 +52,7 @@ pinout:
   uio[4]: "SPK12: CMP spike"
   uio[5]: "SPK13: D1 dendrite spike"
   uio[6]: "Digital LIF spike (OUT_MUX=0) / SPK14: AH50 spike (OUT_MUX=1)"
-  uio[7]: "Config echo (OUT_MUX=0) / SPK15: AH800 spike (OUT_MUX=1)"
+  uio[7]: "Config echo (OUT_MUX=0) / SPK15: AH400 spike (OUT_MUX=1)"
 
   # Analog pins - make sure to also set "analog_pins" above, else the pins won't be connected
   ua[0]: "IREF: bias reference current in (sets speed) / stimulus in"
