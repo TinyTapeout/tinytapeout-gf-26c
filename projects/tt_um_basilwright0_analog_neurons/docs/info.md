@@ -16,7 +16,7 @@ reference model, and to measure what per-neuron configurability buys in accuracy
 
 | Block | Description |
 |---|---|
-| Neuron array (4 × 4 slots) | Axon-hillock LIF neurons with a 200 fF membrane, leak OTA, refractory period, two input synapses (stimulus A and B), hold switch, membrane reset and an in-cell probe follower. Four groups, interleaved as a Latin square: **S** (shared biases, ×3), **F** (leak set by geometry, τ_F = 2 τ_S, ×3), **H** (shared biases plus a 4-bit threshold trim, ×3) and **P** (threshold trim plus a 4-bit leak-τ trim, ×2). Single variants: **CMP** (comparator-based LIF with a threshold trim, double-height slot), **AH50** and **AH800** (50 fF and ~740 fF membranes) and **REF** (probe of the resting-potential line, for calibration). |
+| Neuron array (4 × 4 slots) | Axon-hillock LIF neurons with a 200 fF membrane, leak OTA, refractory period, two input synapses (stimulus A and B), hold switch, membrane reset and an in-cell probe follower. Four groups (M2: two rows of trimmed slots, two compact rows): **S** (shared biases, ×3), **F** (leak set by geometry, τ_F = 2 τ_S, ×3), **H** (shared biases plus a 4-bit threshold trim, ×3) and **P** (threshold trim plus a 4-bit leak-τ trim, ×2). Single variants: **CMP** (comparator-based LIF with a threshold trim, double-height slot), **AH50** and **AH400** (50 fF and ~470 fF membranes) and **REF** (probe of the resting-potential line, for calibration). |
 | AdEx (channel 3) | Adaptive exponential integrate-and-fire neuron with a programmable adaptation current (`vbp_w`). |
 | D1 dendrite (channel 13) | Soma plus two dendritic subunits with an all-or-none plateau nonlinearity. Star or chain topology; clustered or distributed stimulus. |
 | Digital LIF | 12-bit bit-serial LIF in the control block. It is clocked by `clk` and performs one update per `ui[7]` tick, reproducing the software model exactly. |
@@ -55,7 +55,7 @@ All `uio` pins are outputs (`uio_oe` tied high). `uio_in`, `ena` and `ua[2..5]` 
 | 0, 4, 8 | S1, S2, S3 | 7, 11 | P2, P3 |
 | 1, 5, 9 | F1, F2, F3 | 12 | CMP |
 | 2, 6, 10 | H1, H2, H3 | 13 | D1 |
-| 3 | AdEx | 14, 15 | AH50, AH800 |
+| 3 | AdEx | 14, 15 | AH50, AH400 |
 
 **Probe select:** PROBE SEL equals the spike channel for every neuron except two. SEL = 4 shows CMP's membrane and
 SEL = 12 shows S2's (CMP and S2 swapped array positions after the control block was frozen).
@@ -74,7 +74,7 @@ The full map, timing and bit packing are in [`docs/regmap.md`](regmap.md).
 | 0x00–0x04 | IDAC | Eight 5-bit DAC codes (leak, refractory, synapse, D1 axial, AdEx adaptation, EL, V_reset, CMP threshold), packed as a 40-bit word, LSB first |
 | 0x05 | VDAC | 6-bit threshold reference `vth_ref` |
 | 0x06 | ANA | Group enables, D1 plateau / chain / stimulus-B steering, BIAS_EN |
-| 0x07 | PROBE | SEL (channel to probe; see the note above), SUB (membrane / secondary node / REF), PROBE_EN |
+| 0x07 | PROBE | SEL (channel to probe; see the note above), SUB (membrane / secondary node / REF; the compact slots S, F, AH50 and AH400 have no secondary-node tap), PROBE_EN |
 | 0x08 | MODE | `ua[0]` mode, OUT_MUX, IB_X2 (readout bias ×2), RT_EN (enables for the `ui[6:3]` pass-throughs) |
 | 0x09–0x0E | LIF | Digital LIF: enable and source, leak shift and refractory, EL, Vth, Vreset, weight |
 | 0x0F–0x16 | TRIM | 4-bit trims: H/P/CMP thresholds, D1 plateau thresholds, P leak-τ |
@@ -98,7 +98,13 @@ oscilloscope or ADC reads `ua[1]`.
    1. probe REF (PROBE_SUB = 3) to measure EL;
    2. set the threshold code using the REF channel and firing-rate checks;
    3. set EL;
-   4. set the H, P, CMP and D1 trims.
+   4. set the H, P, CMP and D1 trims;
+   5. **leak code at high speed (S ≥ ~1000):** scale the `vbn_leak` code with S, then correct it so that the
+      large-signal behaviour scales, not the small-signal one. Measure the rheobase of an S neuron (the smallest
+      stimulus that makes it fire) at S = 100, then at the target S, and adjust the leak code until
+      rheo(S) / ((S / 100) · rheo(100)) ≈ 1. Post-layout simulation gives the nominal code × 13/12 at tt, ss and ff
+      (ratio 1.03 / 0.98 / 1.03). Do **not** match the leak conductance at rest (the small-signal τ at EL): at ss / 0 °C
+      that over-corrects (code 21: no firing at 1.1 × rheobase). Repeat after a large temperature change.
 6. **Run the analog neurons:** set RT_EN, drive stimulus A/B on `ui[3]`/`ui[4]` and count spikes on `uo`/`uio`. Move the
    probe to observe membranes on `ua[1]`.
 7. **Run the digital LIF:** write the LIF parameters with LIF_EN = 0, then set LIF_EN = 1. Drive `clk` and tick `ui[7]`,
@@ -110,16 +116,46 @@ oscilloscope or ADC reads `ua[1]`.
 - **Change the probe in three steps:** disable it (PROBE_EN = 0 with the old SEL/SUB), change SEL/SUB, then re-enable.
   Wait at least 2.5 µs after re-enabling before sampling `ua[1]` (post-layout 1 % settling into 200 pF: 2.0 µs
   typical, 2.05 µs at ss / 0 °C).
+  Enabling or disabling the D1 probe kicks D1's compartments by up to +6 / −8 mV (post-layout, ss / 0 °C; the
+  two edges nearly cancel). Switch the D1 probe while D1 is at rest, not mid-measurement.
 - **Hold BIAS_EN = 0 while changing bias codes**, because a 5-bit code can straddle two bytes.
 - **Change digital-LIF parameters only while LIF_EN = 0**, and wait at least 3 clock cycles after clearing it.
 - **Stop `clk` during analog measurements.** The configuration latches, spike outputs and stimulus pass-throughs work
   without it.
 - **Pulse MRESET after setting BIAS_EN** to clear the AdEx adaptation node, which powers up near VDD.
 - **Wait for the leak line to settle** after a leak-code change: up to about 10 ms at S = 10.
-- **Speed range:** S = 10–1000 is supported.
+- **Speed range:** S = 10–1000 is fully supported; S = 10000 with the limits below.
   - At S ≥ ~300, use EL / Vth / Vreset ≈ 1.50 / 1.58 / 1.50 V so the leak OTA has enough headroom at every corner.
   - From S = 1000 up to about 2000: stimulate at most ~4 array neurons at once, set IB_X2 and use the ÷1 `ua[0]` mode.
-  - S = 10000 is not supported.
+  - S = 10000 (M2 cells, level 3 + 4): use EL / Vreset 1.50 V and the high-speed leak-code rule (step 5.5). Every slot
+    type passes the post-layout f–I gate (0.7–1.4 × ideal scaling) at tt / ss / ff, including ss / 0 °C. Limits: the
+    CMP slot needs the vth_cmp code window below; AH50 needs the step 5.5 leak calibration at ss / 0 °C (1.38 of 1.4
+    uncalibrated, 1.29 calibrated). Full chip (post-layout, tt / 27 °C and ss / 0 °C, 100 µA into `ua[0]` in EXT ÷1
+    mode, IB_X2, leak code ×13/12, all 13 array neurons and AdEx firing at 2–4 × rheobase): every neuron fires, with no
+    false CMP spikes at codes 26 and 27. Firing moves the bias lines by ≤ 6 mV (mean); local p-p ripple is up to
+    ~100 mV on vreset and ~60 mV on vsrc. Supply current is 0.70–0.85 mA (peak 1.4 mA). Static IR drop is ≤ 9 mV with the PDN fed at both stripe ends (B1 / R1), ≤ 15 mV fed from the top only.
+  - **CMP threshold code (vth_cmp, IDAC code 8 = r2, word bits 35–39 = byte 0x04 bits 3–7):** vth_cmp ≈
+    1.225 V + 13.7 mV × code (M3 DAC, 1.23–1.64 V). At S = 10000 only **codes 26 and 27** pass the f–I gate at every
+    corner (post-layout slot_cmp_h, EL 1.50 V; min–max of f/f_ideal, pass 0.7–1.4):
+
+    | code | vth_cmp | tt / 27 °C | ss / 0 °C | ff / 85 °C |
+    |---|---|---|---|---|
+    | 25 | ~1.567 V | 0.69–0.86 fail | 0.68–0.88 fail | 0.57–0.81 fail |
+    | 26 | ~1.580 V | 0.78–0.92 | 0.75–0.95 (calibrated leak 0.75–0.88) | 0.80–0.92 |
+    | 27 | ~1.594 V | 0.81–0.99 | 0.79–1.09 | 0.84–0.94 |
+    | 28 | ~1.608 V | 0.84–1.52 fail | no firing at 1.1 × rheobase | 0.86–0.99 |
+
+    Too low a code makes the CMP too slow at high drive (the comparator's trip falls with speed); too high a code stops
+    it firing near rheobase. Use **26** as the starting code at S = 10000 (it passes on more dies under mismatch, see below). At S ≤ ~1000 set vth_cmp ≈ Vth:
+    code ≈ (Vth − 1.225 V) / 13.7 mV, e.g. 11 for 1.38 V, 26 for 1.58 V. Per die: with BIAS_EN = 0 write r2, set BIAS_EN = 1, drive
+    the CMP slot at 1.1 × and 8 × its rheobase, and compare the rates with the same run at S = 100. If 1.1 × fires too
+    fast or not at all, step r2 down by one; if 8 × is below ~0.75 × ideal scaling, step r2 up by one. Re-check after
+    the leak calibration (step 5.5), which moves the 1.1 × point.
+    **The per-die step is required at S = 10000.** A mismatch Monte Carlo (vth_cmp DAC offset σ ≈ 13 mV, about one
+    code, plus slot mismatch; 40 dies over tt / ss / ff) shows that no fixed code passes on every die. At ss / 0 °C,
+    code 27 passes on 65 % of dies and code 26 on 80 %; either 26 or 27 passes on 95 %. The window moves by up to ±1
+    code, so some dies need 25 or 28 (1 of 20 dies needed 28 at ss); every simulated die passed at some code in 25–28.
+    Start from 26, follow the step rule above, and allow codes 25–28.
 
 ## External hardware
 
