@@ -437,11 +437,11 @@ MACRO tt_um_metastability_characterizer
   END VGND
   OBS
     LAYER Metal1 ;
-      RECT 149.080 166.800 345.640 323.600 ;
+      RECT 149.080 198.720 345.640 323.600 ;
     LAYER Metal2 ;
-      RECT 149.080 166.800 345.640 323.600 ;
+      RECT 149.080 198.720 345.640 323.600 ;
     LAYER Metal3 ;
-      RECT 149.080 166.800 345.640 323.600 ;
+      RECT 149.080 198.720 345.640 323.600 ;
   END
 END tt_um_metastability_characterizer
 
