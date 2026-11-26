@@ -3,7 +3,7 @@ project:
   title:        "Metastability Characterizer"
   author:       "Benjamin J. Eisenberg, Roshan Hegde"
   discord:      ""
-  description:  "Counts unresolved metastable events in four flip-flop designs on GF180 silicon"
+  description:  "Counts unresolved metastable events in six flip-flop designs on GF180 silicon"
   language:     "Analog"
   clock_hz:     20000000
 
@@ -16,29 +16,30 @@ project:
   source_files:
     - "project.v"
 
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
+  ui[0]: "byte_sel"
+  ui[1]: "bank_select[0]"
+  ui[2]: "bank_select[1]"
   ui[3]: "dut_select[0]"
   ui[4]: "start"
-  ui[5]: ""
+  ui[5]: "bank_early_clock"
   ui[6]: "data_in"
-  ui[7]: ""
+  ui[7]: "bank_enable"
 
   # Outputs
-  uo[0]: "event_count[0]"
-  uo[1]: "event_count[1]"
-  uo[2]: "event_count[2]"
-  uo[3]: "event_count[3]"
-  uo[4]: "event_count[4]"
-  uo[5]: "event_count[5]"
-  uo[6]: "event_count[6]"
-  uo[7]: "event_count[7]"
+  uo[0]: "K[0] / K[8]"
+  uo[1]: "K[1] / K[9]"
+  uo[2]: "K[2] / K[10]"
+  uo[3]: "K[3] / K[11]"
+  uo[4]: "K[4] / K[12]"
+  uo[5]: "K[5] / K[13]"
+  uo[6]: "K[6] / K[14]"
+  uo[7]: "K[7] / K[15]"
 
   # Bidirectional pins
-  uio[0]: ""
+  uio[0]: "bank_data_in"
   uio[1]: "busy"
   uio[2]: "done"
   uio[3]: "fault"
